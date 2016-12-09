@@ -4,21 +4,21 @@
  
 Design and implement a RESTful web service which manages an arbitrarily structured tree or hierarchy of nodes.
 A node in the tree should have the following mandatory properties:
-+A globally unique name
-+Brief description.Any additional properties on a node are up to the developer. 
-+A node in the tree can have a parent node, and can have 0 to 15 children (an attempt to add more than 15 child nodes to a parent will result in an error).  The tree managed by the service will have a single, parent node, named ‘root’, that will always exist and can never be modified or deleted.
+..+A globally unique name
+..+Brief description.Any additional properties on a node are up to the developer. 
+..+A node in the tree can have a parent node, and can have 0 to 15 children (an attempt to add more than 15 child nodes to a parent will result in an error).  The tree managed by the service will have a single, parent node, named ‘root’, that will always exist and can never be modified or deleted.
 Functional Requirements:
 The service will provide resources to support the following:
-+Add a node to the tree at a specific location (for instance, add a new node to a leaf node’s children)
-+Retrieve a single node
-+Retrieve the immediate children of a node
-+Retrieve all descendants of a node (immediate children and nested children)
-+For an arbitrary node, retrieve all ancestors/parents of the node (the path from the root node to the specific node).
-+Remove a node from the tree (also removes all of its children)
+..+Add a node to the tree at a specific location (for instance, add a new node to a leaf node’s children)
+..+Retrieve a single node
+..+Retrieve the immediate children of a node
+..+Retrieve all descendants of a node (immediate children and nested children)
+..+For an arbitrary node, retrieve all ancestors/parents of the node (the path from the root node to the specific node).
+..+Remove a node from the tree (also removes all of its children)
 Non-Functional Requirements:
-+The sample project must include instructions for building and running the project.  Preferably, projects should use a build tool such as Maven, Gradle, Make, etc.
-+The service should handle any error conditions (such as invalid input or internal errors) with suitable HTTP error responses. 
-+The developer is responsible for designing the API signatures, including the input/output data structures, and any exceptions deemed necessary.
+..+The sample project must include instructions for building and running the project.  Preferably, projects should use a build tool such as Maven, Gradle, Make, etc.
+..+The service should handle any error conditions (such as invalid input or internal errors) with suitable HTTP error responses. 
+..+The developer is responsible for designing the API signatures, including the input/output data structures, and any exceptions deemed necessary.
 
 Although Java is preferred, the choice of language and frameworks is at the discretion of the developer.  Ideally, the application will run as a simple process/executable, and not require an external container or web server to run.
 Projects can be submitted to us either via a zip/tarball containing all source, or alternatively, a link to an available GitHub, Bitbucket, or similar repository.
@@ -35,7 +35,7 @@ Projects can be submitted to us either via a zip/tarball containing all source, 
  
 ### API test functionality
 
-# NOTE The root node ID is ROOT.
+### NOTE The root node ID is ROOT.
 
 If you ever need to know the paths of leaves on the tree. The sample below is generated from running ./createSomeNodes.sh script.
 
@@ -277,7 +277,10 @@ Transfer-Encoding: chunked
 ```
 
 ### Links
+
 [httpie](https://httpie.org/#installation)
+
 [Spring Boot](https://github.com/spring-projects/spring-boot)
+
 [Maven Wrapper](https://github.com/takari/maven-wrapper)
 
