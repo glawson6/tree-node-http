@@ -30,8 +30,12 @@ Projects can be submitted to us either via a zip/tarball containing all source, 
  
 ### To run this app
 
+Make sure you have java 1.8 installed on your system.
+```
  ./mvnw clean package -Dmaven.test.skip=true && java -jar target/tree-node-http.jar 
+```
  
+
  If you want to quickly interact with tthe app install [httpie](https://httpie.org/#installation). Start the application in on terminal. Open 
  another terminal and navigate from the project root to src/test/resources/utils. On Linux/Cygwin systems, you should be able to run
   ./createSomeNodes.sh to create some nodes.
