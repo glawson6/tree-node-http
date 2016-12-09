@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+target/
+.idea/
+publish.properties
+
+dokku-deploy.txt
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!--<property name="CATALINA_HOME" value="../logs"/>
+	<contextName>GeodataServiceLogBack</contextName>
+	<jmxConfigurator/>-->
+	<!--<property file="${catalina.base}/conf/geodata-service.properties"/>-->
+	<!-- Not for production -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+           <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+           </Pattern>
+        </layout>
+	</appender>
+
+	<!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/geodata-service.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			&lt;!&ndash; rollover daily &ndash;&gt;
+			<fileNamePattern>${catalina.base}/logs/geodata-service-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				&lt;!&ndash; or whenever the file size reaches 10MB &ndash;&gt;
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+    	</rollingPolicy>
+        <encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%X{user}] %msg%n</pattern>
+		</encoder>
+	</appender>-->x
+
+	<logger name="geodata" level="DEBUG"/>
+	<logger name="wire-tap" level="DEBUG"/>
+	<logger name="org.hibernate.SQL" level="ERROR"/>
+	<logger name="com.ttis.treenode.service" level="DEBUG">
+	</logger>
+
+	<logger name="org.springframework" level="INFO">
+	</logger>
+
+	<root>
+		<appender-ref ref="CONSOLE" />
+		<!--<appender-ref ref="FILE"/>-->
+	</root>
+
+</configuration>
