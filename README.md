@@ -228,28 +228,29 @@ User-Agent: HTTPie/0.9.3
 
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Date: Fri, 09 Dec 2016 16:07:24 GMT
+Date: Fri, 09 Dec 2016 18:10:31 GMT
 Server: Apache-Coyote/1.1
 Transfer-Encoding: chunked
 
 {
     "family": {
-        "ancestors": {
-            "CH2": {
-                "description": "The node at row2", 
-                "id": "CH2"
-            }, 
-            "CH4": {
+        "ancestors": [
+            {
                 "description": "The node4", 
                 "id": "CH4"
             }, 
-            "ROOT": {
+            {
+                "description": "The node at row2", 
+                "id": "CH2"
+            }, 
+            {
                 "description": "This is the root node", 
                 "id": "ROOT"
             }
-        }
+        ]
     }
 }
+
 
 ```
 

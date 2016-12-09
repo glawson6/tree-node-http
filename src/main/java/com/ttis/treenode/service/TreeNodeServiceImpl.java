@@ -9,6 +9,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
 
@@ -53,6 +54,11 @@ public class TreeNodeServiceImpl implements TreeNodeService {
     @Override
     public Future<Map<String, TreeNode>> getRootToNode(String nodeId) {
         return executor.submit(new GetRootToNodeTask(root, nodeId));
+    }
+
+    @Override
+    public Future<List<TreeNode>> getRootToNodeList(String nodeId) {
+        return executor.submit(new GetRootToNodeListTask(root, nodeId));
     }
 
     @Override

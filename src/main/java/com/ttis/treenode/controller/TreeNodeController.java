@@ -1,10 +1,7 @@
 package com.ttis.treenode.controller;
 
 import com.ttis.treenode.domain.TreeNode;
-import com.ttis.treenode.dto.FamilyDTO;
-import com.ttis.treenode.dto.NewNodeDTO;
-import com.ttis.treenode.dto.SimpleResponse;
-import com.ttis.treenode.dto.TreeNodeDTO;
+import com.ttis.treenode.dto.*;
 import com.ttis.treenode.exception.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -83,6 +81,7 @@ public class TreeNodeController extends BaseController{
         return responseEntity;
     }
 
+    /*
     @RequestMapping(value = "/ancestors/{nodeId}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> getAncestors(@PathVariable String nodeId){
@@ -94,6 +93,34 @@ public class TreeNodeController extends BaseController{
             Future<Map<String, TreeNode>> mapFuture = treeNodeService.getRootToNode(nodeId);
             Map<String,TreeNode> treeNodeMap = mapFuture.get();
             descendantsDTO = convertDescendantMapToDTO(treeNodeMap,FamilyDTO.ANCESTORS);
+            if (null == descendantsDTO || null == descendantsDTO.getFamily() || descendantsDTO.getFamily().size() <= 0
+                    || descendantsDTO.getFamily().get(FamilyDTO.ANCESTORS).size() <= 0){
+                StringBuilder message = new StringBuilder("No descendants found for ");
+                message.append(nodeId);
+                responseEntity = new ResponseEntity<>(new SimpleResponse(false, message.toString()), HttpStatus.NOT_FOUND);
+            } else {
+                responseEntity = new ResponseEntity<>(descendantsDTO , HttpStatus.OK);
+            }
+        } catch (ExecutionException ie){
+            responseEntity = createSystemErrorResponse((Exception)ie.getCause());
+        } catch (Exception ie){
+            responseEntity = createSystemErrorResponse(ie);
+        }
+        return responseEntity;
+    }
+    */
+
+    @RequestMapping(value = "/ancestors/{nodeId}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<?> getAncestors(@PathVariable String nodeId){
+        logger.debug("getAncestors(nodeId => {})", new Object[] {nodeId});
+        ResponseEntity<?> responseEntity = null;
+
+        FamilyListDTO descendantsDTO = null;
+        try {
+            Future<List<TreeNode>> mapFuture = treeNodeService.getRootToNodeList(nodeId);
+            List<TreeNode> treeNodeMap = mapFuture.get();
+            descendantsDTO = convertDescendantListToDTO(treeNodeMap,FamilyDTO.ANCESTORS);
             if (null == descendantsDTO || null == descendantsDTO.getFamily() || descendantsDTO.getFamily().size() <= 0
                     || descendantsDTO.getFamily().get(FamilyDTO.ANCESTORS).size() <= 0){
                 StringBuilder message = new StringBuilder("No descendants found for ");
@@ -227,6 +254,17 @@ public class TreeNodeController extends BaseController{
                         entry -> new TreeNodeDTO(entry.getValue().getId(), entry.getValue().getDescription())));
         Map<String, Map<String, TreeNodeDTO>> familyMap = new HashMap<>();
         familyMap.put(family, nodeDTOMap);
+        descendantsDTO.setFamily(familyMap);
+        return descendantsDTO;
+    }
+
+    private FamilyListDTO convertDescendantListToDTO(List<TreeNode> treeNodeList, String family) {
+        FamilyListDTO descendantsDTO = new FamilyListDTO();
+        List<TreeNodeDTO> nodeDTOList = treeNodeList.stream()
+                .map(node -> convertToTreeNodeDTO(node))
+                .collect(Collectors.toList());
+        Map<String, List<TreeNodeDTO>> familyMap = new HashMap<>();
+        familyMap.put(family, nodeDTOList);
         descendantsDTO.setFamily(familyMap);
         return descendantsDTO;
     }

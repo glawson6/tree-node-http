@@ -3,6 +3,7 @@ package com.ttis.treenode.service;
 import com.ttis.treenode.domain.TreeNode;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
 
@@ -29,6 +30,7 @@ public interface TreeNodeService {
     Future<Map<String, TreeNode>> getChildren(String nodeId);
     Future<Map<String, TreeNode>> getDescendants(String nodeId);
     Future<Map<String, TreeNode>> getRootToNode(String nodeId);
+    Future<List<TreeNode>> getRootToNodeList(String nodeId);
     Future<TreeNode> getNode(String nodeId);
     Future<TreeNode> removeNode(String nodeId);
     Future<TreeNode> addChildNode(String parentNodeId, TreeNode node);
