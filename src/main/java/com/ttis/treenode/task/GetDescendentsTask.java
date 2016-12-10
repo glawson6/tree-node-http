@@ -25,16 +25,6 @@ public class GetDescendentsTask implements Callable<Map<String, TreeNode>> {
 
     @Override
     public Map<String, TreeNode> call() throws Exception {
-        //TreeNode oneNode = TreeNode.findNode(node, nodeId);
-        // Any path that has the nodeId in should be considered.
-        /*
-        Map<String,String> paths = TreeNode.nodeIdsMap().entrySet().stream()
-                .filter(entry -> entry.getValue().contains(nodeId))
-                .collect(Collectors.toMap(
-                    entry -> entry.getKey(),
-                    entry -> entry.getValue()));
-                    */
-
 
         Map<String,TreeNode> descendents = TreeNode.nodeIdsMap().entrySet().stream()
                 .filter(entry -> entry.getValue().contains(nodeId))
@@ -42,13 +32,7 @@ public class GetDescendentsTask implements Callable<Map<String, TreeNode>> {
                         entry -> entry.getKey(),
                         entry -> TreeNode.findNode(node, entry.getKey())));
 
-        /*
-        Map<String, TreeNode> descendents =
-                paths.entrySet().stream()
-                        .collect(Collectors.toMap(
-                                entry -> entry.getKey(),
-                                entry -> entry.getValue()));
-                                */
+
         return descendents;
     }
 }

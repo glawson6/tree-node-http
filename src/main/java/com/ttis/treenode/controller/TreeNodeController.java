@@ -2,7 +2,6 @@ package com.ttis.treenode.controller;
 
 import com.ttis.treenode.domain.TreeNode;
 import com.ttis.treenode.dto.*;
-import com.ttis.treenode.exception.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;

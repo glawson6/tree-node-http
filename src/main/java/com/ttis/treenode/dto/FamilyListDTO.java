@@ -1,7 +1,5 @@
 package com.ttis.treenode.dto;
 
-import com.ttis.treenode.domain.TreeNode;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

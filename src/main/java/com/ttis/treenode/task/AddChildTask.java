@@ -32,12 +32,14 @@ public class AddChildTask implements Callable<TreeNode> {
         } else {
             added = findNode.addChild(node);
         }
-        logger.info("TreeNode {}",TreeNode.ROOT.toString());
-        logger.info(" We want to add node {} as a child to node {} with findNode => {}", new Object[]{node.getId(), nodeId,findNode});
-        logger.info(" We actually added node {} as a child to node {} with findNode => {}", new Object[]{added.getId(), added.getParent().getId(),findNode});
+        /*
+        logger.debug("TreeNode {}",TreeNode.ROOT.toString());
+        logger.debug(" We want to add node {} as a child to node {} with findNode => {}", new Object[]{node.getId(), nodeId,findNode});
+        logger.debug(" We actually added node {} as a child to node {} with findNode => {}", new Object[]{added.getId(), added.getParent().getId(),findNode});
         //logger.info("AddChildTask node => {} findNode => {}",nodeId, findNode);
         //logger.info("add child node => {}",added);
-        logger.info("AllIdsMap => {}",TreeNode.nodeIdsMap());
+        logger.debug("AllIdsMap => {}",TreeNode.nodeIdsMap());
+        */
         return added;
     }
 }

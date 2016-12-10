@@ -1,6 +1,5 @@
 package com.ttis.treenode.domain;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import com.ttis.treenode.exception.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +84,7 @@ public class TreeNode {
                 child.parent = this;
                 children.put(child.getId(), child);
 
-                logger.info("########### id {} parent {} ", new Object[]{id, parent});
+                logger.debug("########### id {} parent {} ", new Object[]{id, parent});
             }
         }
 
@@ -247,19 +246,14 @@ public class TreeNode {
     }
 
     private String calculatePath() {
-        Stack<String> pathStack = new Stack<>();
         LinkedList<String> someIds = new LinkedList<>();
         TreeNode node = this;
-        pathStack.push(this.getId());
         someIds.offerFirst(this.getId());
         while (node.parent != null) {
             node = node.parent;
-            pathStack.push(node.getId());
             someIds.offerFirst(node.getId());
         }
-        String results2 = String.join(".", someIds);
-        String results3 = String.join(".", pathStack);
-        logger.info("results2 => {}, results3 => {}", new Object[]{results2, results3});
+
         String result = someIds.stream()
                 .map(str -> str)
                 .collect(Collectors.joining("."));

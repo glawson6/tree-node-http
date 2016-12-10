@@ -31,6 +31,8 @@ Projects can be submitted to us either via a zip/tarball containing all source, 
 ### To run this app
 
 Make sure you have java 1.8 installed on your system.
+
+From the command line run:
 ```
  ./mvnw clean package -Dmaven.test.skip=true && java -jar target/tree-node-http.jar 
 ```
