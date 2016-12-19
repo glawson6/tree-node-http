@@ -8,8 +8,8 @@
     <artifactId>tree-node-http</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>user-movie-demo</name>
-    <description>User Movie Demo</description>
+    <name>treenode</name>
+    <description>treenode</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
