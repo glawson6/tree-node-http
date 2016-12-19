@@ -38,6 +38,7 @@ From the command line run:
 ```
  
 
+
  If you want to quickly interact with tthe app install [httpie](https://httpie.org/#installation). Start the application in on terminal. Open 
  another terminal and navigate from the project root to src/test/resources/utils. On Linux/Cygwin systems, you should be able to run
   ./createSomeNodes.sh to create some nodes.
