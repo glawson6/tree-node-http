@@ -29,6 +29,7 @@ server {
   include {{ .DOKKU_ROOT }}/{{ .APP }}/nginx.conf.d/*.conf;
 }
 
+
 upstream {{ .APP }} {
 {{ range .DOKKU_APP_LISTENERS | split " " }}
   server {{ . }};
