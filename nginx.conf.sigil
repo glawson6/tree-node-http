@@ -1,7 +1,9 @@
 server {
-  listen      [::]:{{ .NGINX_PORT }};
-  listen      {{ .NGINX_PORT }};
-  server_name {{ .APP  }};
+ # listen      [::]:{{ .NGINX_PORT }};
+ # listen      {{ .NGINX_PORT }};
+
+  listen       80;
+  server_name treenode.gregorylawson.net;
   access_log  /var/log/nginx/{{ .APP }}-access.log;
   error_log   /var/log/nginx/{{ .APP }}-error.log;
 
