@@ -47,6 +47,8 @@ From the command line run:
 
 ### NOTE The root node ID is ROOT.
 
+Explore the APIs. Open your browser to http://localhost:8080/api/swagger-ui.html
+
 If you ever need to know the paths of leaves on the tree. The sample below is generated from running ./createSomeNodes.sh script.
 
 ```
@@ -146,8 +148,8 @@ Transfer-Encoding: chunked
 Retrieve the immediate children of a node
 
 ```
-$ http -v GET localhost:8080/api/treenode/children/CH2
-GET /api/treenode/children/CH2 HTTP/1.1
+$ http -v GET localhost:8080/api/treenode/CH2/children
+GET /api/treenode/CH2/children HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
@@ -182,8 +184,8 @@ Transfer-Encoding: chunked
 Retrieve all descendants of a node (immediate children and nested children)
 
 ```
-$ http -v GET localhost:8080/api/treenode/descendants/CH2
-GET /api/treenode/descendants/CH2 HTTP/1.1
+$ http -v GET localhost:8080/api/treenode/CH2/descendants
+GET /api/treenode/CH2/descendants HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
@@ -222,8 +224,8 @@ Transfer-Encoding: chunked
 For an arbitrary node, retrieve all ancestors/parents of the node (the path from the root node to the specific node).
 
 ```
-$ http -v GET localhost:8080/api/treenode/ancestors/CH4
-GET /api/treenode/ancestors/CH4 HTTP/1.1
+$ http -v GET localhost:8080/api/treenode/CH4/ancestors
+GET /api/treenode/CH4/ancestors HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
 Connection: keep-alive

@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = { })
 @ComponentScan(basePackages = {"com.ttis.treenode.controller","com.ttis.treenode.service"})
+@EnableSwagger2
 public class Application {
 
     public static void main(String[] args) {
